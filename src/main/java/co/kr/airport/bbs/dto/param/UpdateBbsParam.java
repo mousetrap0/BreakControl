@@ -9,6 +9,7 @@ public class UpdateBbsParam {
     private String title;
 
     private String content;
+    
 
 
     public UpdateBbsParam(Integer seq, UpdateBbsRequest req) {
