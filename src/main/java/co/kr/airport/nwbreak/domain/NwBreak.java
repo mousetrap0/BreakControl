@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class NwBreak {
 
+	private int rnum;
 	private int breakId;
 	private String lineId;
 	private Date breakTime;
@@ -18,6 +19,14 @@ public class NwBreak {
 	private Date createTime;
 	private String updateUser;
 	private Date updateTime;
+	
+	
+	public int getRnum() {
+		return rnum;
+	}
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
 	public int getBreakId() {
 		return breakId;
 	}

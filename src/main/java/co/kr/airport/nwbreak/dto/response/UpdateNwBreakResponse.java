@@ -1,10 +1,10 @@
 package co.kr.airport.nwbreak.dto.response;
 
-public class UpdateBbsResponse {
+public class UpdateNwBreakResponse {
 
     private Integer updatedRecordCount;
 
-    public UpdateBbsResponse(Integer updatedRecordCount) {
+    public UpdateNwBreakResponse(Integer updatedRecordCount) {
         this.updatedRecordCount = updatedRecordCount;
     }
 

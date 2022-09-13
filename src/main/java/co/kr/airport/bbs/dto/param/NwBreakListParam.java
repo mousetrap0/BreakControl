@@ -1,15 +1,17 @@
-package co.kr.airport.nwbreak.dto.param;
+package co.kr.airport.bbs.dto.param;
 
 import co.kr.airport.bbs.dto.request.BbsListRequest;
 
-public class BbsCountParam {
+public class NwBreakListParam extends PageParam {
 
     private String choice;
     private String search;
+    private Integer page;
 
-    public BbsCountParam(BbsListRequest req) {
+    public NwBreakListParam(BbsListRequest req) {
         this.choice = req.getChoice();
-        this.search = req.getChoice();
+        this.search = req.getSearch();
+        this.page = req.getPage();
     }
 
     public String getChoice() {
@@ -26,5 +28,13 @@ public class BbsCountParam {
 
     public void setSearch(String search) {
         this.search = search;
+    }
+
+    public Integer getPage() {
+        return page;
+    }
+
+    public void setPage(Integer page) {
+        this.page = page;
     }
 }

@@ -1,14 +1,14 @@
 package co.kr.airport.nwbreak.dao;
 
 import java.util.List;
-import co.kr.airport.bbs.domain.Bbs;
-import co.kr.airport.bbs.dto.param.BbsCountParam;
-import co.kr.airport.bbs.dto.param.BbsListParam;
-import co.kr.airport.bbs.dto.param.CreateBbsAnswerParam;
-import co.kr.airport.bbs.dto.param.CreateBbsParam;
-import co.kr.airport.bbs.dto.param.CreateReadCountParam;
-import co.kr.airport.bbs.dto.param.UpdateBbsParam;
+
 import co.kr.airport.nwbreak.domain.NwBreak;
+import co.kr.airport.nwbreak.dto.param.CreateNwBreakAnswerParam;
+import co.kr.airport.nwbreak.dto.param.CreateNwBreakParam;
+import co.kr.airport.nwbreak.dto.param.CreateReadCountParam;
+import co.kr.airport.nwbreak.dto.param.NwBreakCountParam;
+import co.kr.airport.nwbreak.dto.param.NwBreakListParam;
+import co.kr.airport.nwbreak.dto.param.UpdateNwBreakParam;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -19,20 +19,20 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface NwBreakDao {
 
-	List<NwBreak> getBbsSearchPageList(BbsListParam param);
-	Integer getBbsCount(BbsCountParam param);
+	List<NwBreak> getNwBreakSearchPageList(NwBreakListParam param);
+	Integer getNwBreakCount(NwBreakCountParam param);
 
 	NwBreak getBreak(Integer seq);
-	Integer createBbsReadCountHistory(CreateReadCountParam param);
-	Integer increaseBbsReadCount(Integer seq);
+	Integer createNwBreakReadCountHistory(CreateReadCountParam param);
+	Integer increaseNwBreakReadCount(Integer seq);
 
-	void createBbs(CreateBbsParam param);
+	void createNwBreak(CreateNwBreakParam param);
 
 	Integer updateNwBreakStep(Integer parentSeq);
-	Integer getBbsAnswerCount(Integer parentSeq);
-	void createBbsAnswer(CreateBbsAnswerParam param);
+	Integer getNwBreakAnswerCount(Integer parentSeq);
+	void createNwBreakAnswer(CreateNwBreakAnswerParam param);
 
-	Integer updateBbs(UpdateBbsParam param);
+	Integer updateNwBreak(UpdateNwBreakParam param);
 
-	Integer deleteBbs(Integer seq);
+	Integer deleteNwBreak(Integer seq);
 }

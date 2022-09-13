@@ -1,15 +1,16 @@
 package co.kr.airport.nwbreak.controller;
 
 import java.util.Date;
-import co.kr.airport.bbs.dto.request.BbsListRequest;
-import co.kr.airport.bbs.dto.request.CreateBbsRequest;
-import co.kr.airport.bbs.dto.request.UpdateBbsRequest;
-import co.kr.airport.bbs.dto.response.BbsListResponse;
-import co.kr.airport.bbs.dto.response.BbsResponse;
-import co.kr.airport.bbs.dto.response.CreateBbsResponse;
-import co.kr.airport.bbs.dto.response.DeleteBbsResponse;
-import co.kr.airport.bbs.dto.response.UpdateBbsResponse;
-import co.kr.airport.nwbreak.service.BreakService;
+
+import co.kr.airport.nwbreak.dto.request.CreateNwBreakRequest;
+import co.kr.airport.nwbreak.dto.request.NwBreakListRequest;
+import co.kr.airport.nwbreak.dto.request.UpdateNwBreakRequest;
+import co.kr.airport.nwbreak.dto.response.CreateNwBreakResponse;
+import co.kr.airport.nwbreak.dto.response.DeleteNwBreakResponse;
+import co.kr.airport.nwbreak.dto.response.NwBreakListResponse;
+import co.kr.airport.nwbreak.dto.response.NwBreakResponse;
+import co.kr.airport.nwbreak.dto.response.UpdateNwBreakResponse;
+import co.kr.airport.nwbreak.service.NwBreakService;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,59 +29,59 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/nwbreak")
 public class BreakController{
 
-	private final BreakService service;
+	private final NwBreakService service;
 
-	public BreakController(BreakService service) {
+	public BreakController(NwBreakService service) {
 		this.service = service;
 	}
 
-	/* [GET /bbs?choice={choice}&search={search}&page={page}] 게시글 목록 API */
+	/* [GET /nwbreak?choice={choice}&search={search}&page={page}] 게시글 목록 API */
 	@GetMapping
-	public ResponseEntity<BbsListResponse> getBbsList(@ModelAttribute BbsListRequest req){
-		System.out.println("BbsController getBbsList() " + new Date());
+	public ResponseEntity<NwBreakListResponse> getNwBreakList(@ModelAttribute NwBreakListRequest req){
+		System.out.println("BreakController getNwBreakList() " + new Date());
 
-		return ResponseEntity.ok(service.getBbsList(req));
+		return ResponseEntity.ok(service.getNwBreakList(req));
 	}
 
-	/* [GET /bbs/{seq}?readerId={id}] 게시글 상세 API */
+	/* [GET /NwBreak/{seq}?readerId={id}] 게시글 상세 API */
 	@GetMapping("/{seq}")
-	public ResponseEntity<BbsResponse> getBbs(@PathVariable  Integer seq, @RequestParam String readerId) {
-		System.out.println("BbsController getBbs() " + new Date());
+	public ResponseEntity<NwBreakResponse> getNwBreak(@PathVariable  Integer seq, @RequestParam String readerId) {
+		System.out.println("BreakController getNwBreak() " + new Date());
 
-		return ResponseEntity.ok(service.getBbs(seq, readerId));
+		return ResponseEntity.ok(service.getNwBreak(seq, readerId));
 	}
 
-	/* [POST] /bbs 게시글 작성 */
+	/* [POST] /NwBreak 게시글 작성 */
 	@PostMapping
-	public ResponseEntity<CreateBbsResponse> createBbs(@RequestBody CreateBbsRequest req) {
-		System.out.println("BbsController createBbs " + new Date());
+	public ResponseEntity<CreateNwBreakResponse> createNwBreak(@RequestBody CreateNwBreakRequest req) {
+		System.out.println("BreakController createNwBreak " + new Date());
 
-		return ResponseEntity.ok(service.createBbs(req));
+		return ResponseEntity.ok(service.createNwBreak(req));
 	}
 
-	/* [POST] /bbs/{parentSeq}/answer 게시글 답글 작성  */
+	/* [POST] /NwBreak/{parentSeq}/answer 게시글 답글 작성  */
 	@PostMapping("/{parentSeq}/answer")
-	public ResponseEntity<CreateBbsResponse> createBbsAnswer(@PathVariable Integer parentSeq, @RequestBody CreateBbsRequest req) {
-		System.out.println("BbsController createBbsAnswer " + new Date());
+	public ResponseEntity<CreateNwBreakResponse> createNwBreakAnswer(@PathVariable Integer parentSeq, @RequestBody CreateNwBreakRequest req) {
+		System.out.println("BreakController createNwBreakAnswer " + new Date());
 
-		return ResponseEntity.ok(service.createBbsAnswer(parentSeq, req));
+		return ResponseEntity.ok(service.createNwBreakAnswer(parentSeq, req));
 	}
 
-	/* [PATCH] /bbs/{seq} 게시글 수정  */
+	/* [PATCH] /NwBreak/{seq} 게시글 수정  */
 	// TODO - 수정하는 사람 ID 확인
 	@PatchMapping("/{seq}")
-	public ResponseEntity<UpdateBbsResponse> updateBbs(@PathVariable Integer seq, @RequestBody UpdateBbsRequest req) {
-		System.out.println("BbsController updateBbs " + new Date());
+	public ResponseEntity<UpdateNwBreakResponse> updateNwBreak(@PathVariable Integer seq, @RequestBody UpdateNwBreakRequest req) {
+		System.out.println("BreakController updateNwBreak " + new Date());
 
-		return ResponseEntity.ok(service.updateBbs(seq, req));
+		return ResponseEntity.ok(service.updateNwBreak(seq, req));
 	}
 
-	/* [DELETE] /bbs/{seq} 게시글 삭제  */
+	/* [DELETE] /NwBreak/{seq} 게시글 삭제  */
 	@DeleteMapping("/{seq}")
-	public ResponseEntity<DeleteBbsResponse> deleteBbs(@PathVariable Integer seq) {
-		System.out.println("BbsController deleteBbs " + new Date());
+	public ResponseEntity<DeleteNwBreakResponse> deleteNwBreak(@PathVariable Integer seq) {
+		System.out.println("BreakController deleteNwBreak " + new Date());
 
-		return ResponseEntity.ok(service.deleteBbs(seq));
+		return ResponseEntity.ok(service.deleteNwBreak(seq));
 	}
 }
 

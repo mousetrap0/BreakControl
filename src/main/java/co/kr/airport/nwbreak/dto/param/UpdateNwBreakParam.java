@@ -1,16 +1,18 @@
 package co.kr.airport.nwbreak.dto.param;
 
-import co.kr.airport.bbs.dto.request.CreateBbsRequest;
+import co.kr.airport.nwbreak.dto.request.UpdateNwBreakRequest;
 
-public class CreateBbsParam {
+public class UpdateNwBreakParam {
 
     private Integer seq;
-    private String id;
+
     private String title;
+
     private String content;
 
-    public CreateBbsParam(CreateBbsRequest req) {
-        this.id = req.getId();
+
+    public UpdateNwBreakParam(Integer seq, UpdateNwBreakRequest req) {
+        this.seq = seq;
         this.title = req.getTitle();
         this.content = req.getContent();
     }
@@ -21,14 +23,6 @@ public class CreateBbsParam {
 
     public void setSeq(Integer seq) {
         this.seq = seq;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getTitle() {
@@ -46,4 +40,5 @@ public class CreateBbsParam {
     public void setContent(String content) {
         this.content = content;
     }
+
 }

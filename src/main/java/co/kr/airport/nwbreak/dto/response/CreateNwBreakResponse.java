@@ -1,10 +1,10 @@
 package co.kr.airport.nwbreak.dto.response;
 
-public class CreateBbsResponse {
+public class CreateNwBreakResponse {
 
     private Integer seq;
 
-    public CreateBbsResponse(Integer seq) {
+    public CreateNwBreakResponse(Integer seq) {
         this.seq = seq;
     }
 

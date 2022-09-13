@@ -43,6 +43,9 @@ public class WebSecurityConfig {
             .antMatchers(HttpMethod.POST, "/bbs", "/comment").authenticated()
             .antMatchers(HttpMethod.PATCH, "/bbs", "/comment").authenticated()
             .antMatchers(HttpMethod.DELETE, "/bbs", "/comment").authenticated()
+            .antMatchers(HttpMethod.POST, "/nwbreak", "/comment").authenticated()
+            .antMatchers(HttpMethod.PATCH, "/nwbreak", "/comment").authenticated()
+            .antMatchers(HttpMethod.DELETE, "/nwbreak", "/comment").authenticated()
             .anyRequest().permitAll();
 
         http.exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)

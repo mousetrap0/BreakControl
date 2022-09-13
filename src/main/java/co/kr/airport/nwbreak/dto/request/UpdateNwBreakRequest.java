@@ -1,6 +1,6 @@
 package co.kr.airport.nwbreak.dto.request;
 
-public class CreateBbsRequest {
+public class UpdateNwBreakRequest {
 
     private String id;
     private String title;

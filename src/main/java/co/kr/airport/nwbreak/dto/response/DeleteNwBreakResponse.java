@@ -1,10 +1,10 @@
 package co.kr.airport.nwbreak.dto.response;
 
-public class DeleteBbsResponse {
+public class DeleteNwBreakResponse {
 
     private Integer deletedRecordCount;
 
-    public DeleteBbsResponse(Integer deletedRecordCount) {
+    public DeleteNwBreakResponse(Integer deletedRecordCount) {
         this.deletedRecordCount = deletedRecordCount;
     }
 

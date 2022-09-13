@@ -1,18 +1,10 @@
-package co.kr.airport.nwbreak.dto.param;
+package co.kr.airport.nwbreak.dto.request;
 
-import co.kr.airport.nwbreak.dto.request.NwBreakListRequest;
-
-public class NwBreakListParam extends PageParam {
+public class NwBreakListRequest {
 
     private String choice;
     private String search;
     private Integer page;
-
-    public NwBreakListParam(NwBreakListRequest req) {
-        this.choice = req.getChoice();
-        this.search = req.getSearch();
-        this.page = req.getPage();
-    }
 
     public String getChoice() {
         return choice;
