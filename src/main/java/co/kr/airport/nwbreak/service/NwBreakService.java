@@ -7,7 +7,6 @@ import co.kr.airport.nwbreak.dao.NwBreakDao;
 import co.kr.airport.nwbreak.domain.NwBreak;
 import co.kr.airport.nwbreak.dto.param.CreateNwBreakAnswerParam;
 import co.kr.airport.nwbreak.dto.param.CreateNwBreakParam;
-import co.kr.airport.nwbreak.dto.param.CreateReadCountParam;
 import co.kr.airport.nwbreak.dto.param.NwBreakCountParam;
 import co.kr.airport.nwbreak.dto.param.NwBreakListParam;
 import co.kr.airport.nwbreak.dto.param.UpdateNwBreakParam;
@@ -46,24 +45,24 @@ public class NwBreakService {
 
 	/* 특정 글 */
 	/* 조회수 수정 */
-	public NwBreakResponse getNwBreak(Integer seq, String readerId) {
+	public NwBreakResponse getNwBreak(Integer breakId, String readerId) {
 		// 로그인 한 사용자의 조회수만 카운팅
-		if (!readerId.isEmpty()) {
+	/*	if (!readerId.isEmpty()) {
 			CreateReadCountParam param = new CreateReadCountParam(seq, readerId);
 			Integer result = dao.createNwBreakReadCountHistory(param); // 조회수 히스토리 처리 (insert: 1, update: 2)
 			if (result == 1) {
 				Integer updatedRecordCount = dao.increaseNwBreakReadCount(seq); // 조회수 증가
 			}
-		}
+		}*/
 
-		return new NwBreakResponse(dao.getBreak(seq));
+		return new NwBreakResponse(dao.getNwBreak(breakId));
 	}
 
 	/* 글 추가 */
 	public CreateNwBreakResponse createNwBreak(CreateNwBreakRequest req) {
 		CreateNwBreakParam param = new CreateNwBreakParam(req);
 		dao.createNwBreak(param);
-		return new CreateNwBreakResponse(param.getSeq());
+		return new CreateNwBreakResponse(param.getBreakId());
 	}
 
 	/* 답글 추가 */

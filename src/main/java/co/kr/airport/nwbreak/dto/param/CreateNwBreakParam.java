@@ -4,7 +4,7 @@ import co.kr.airport.nwbreak.dto.request.CreateNwBreakRequest;
 
 public class CreateNwBreakParam {
 
-    private Integer seq;
+    private int seq;
     private int breakId;
   	private String lineId;
     private String facilityGround;
@@ -16,8 +16,8 @@ public class CreateNwBreakParam {
     private String writer;
 
     public CreateNwBreakParam(CreateNwBreakRequest req) {
-    	 this.breakId = req.getBreakId();
-         this.lineId = req.getLineId();
+    	this.breakId = req.getBreakId();
+        this.lineId = req.getLineId();
         this.facilityGround = req.getFacilityGround();
         this.facilityName = req.getFacilityName();
         this.breakTime = req.getBreakTime();
@@ -27,11 +27,11 @@ public class CreateNwBreakParam {
         this.writer = req.getWriter();
     }
 
-	public Integer getSeq() {
+	public int getSeq() {
 		return seq;
 	}
 
-	public void setSeq(Integer seq) {
+	public void setSeq(int seq) {
 		this.seq = seq;
 	}
 

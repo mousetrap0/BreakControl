@@ -1,12 +1,9 @@
 package co.kr.airport.nwbreak.domain;
 
-import java.util.Date;
-
 
 public class NwBreak {
 
 	private int rnum;
-	 private Integer seq;
 	    private int breakId;
 		private String lineId;
 	    private String facilityGround;
@@ -21,12 +18,6 @@ public class NwBreak {
 		}
 		public void setRnum(int rnum) {
 			this.rnum = rnum;
-		}
-		public Integer getSeq() {
-			return seq;
-		}
-		public void setSeq(Integer seq) {
-			this.seq = seq;
 		}
 		public int getBreakId() {
 			return breakId;

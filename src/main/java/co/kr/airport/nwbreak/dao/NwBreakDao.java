@@ -22,7 +22,7 @@ public interface NwBreakDao {
 	List<NwBreak> getNwBreakSearchPageList(NwBreakListParam param);
 	Integer getNwBreakCount(NwBreakCountParam param);
 
-	NwBreak getBreak(Integer seq);
+	NwBreak getNwBreak(Integer seq);
 	Integer createNwBreakReadCountHistory(CreateReadCountParam param);
 	Integer increaseNwBreakReadCount(Integer seq);
 

@@ -2,17 +2,18 @@ package co.kr.airport.nwbreak.dto.response;
 
 public class CreateNwBreakResponse {
 
-    private Integer seq;
+	private int breakId;
 
-    public CreateNwBreakResponse(Integer seq) {
-        this.seq = seq;
+    public CreateNwBreakResponse(int breakId) {
+        this.breakId = breakId;
     }
 
-    public Integer getSeq() {
-        return seq;
-    }
+	public int getBreakId() {
+		return breakId;
+	}
 
-    public void setSeq(Integer seq) {
-        this.seq = seq;
-    }
+	public void setBreakId(int breakId) {
+		this.breakId = breakId;
+	}
+
 }
