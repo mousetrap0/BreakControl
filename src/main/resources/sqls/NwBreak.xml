@@ -46,12 +46,10 @@
 
 	<!-- 특정 게시글 조회 -->
 	<select id="getNwBreak" parameterType="Integer" resultType="co.kr.airport.nwbreak.domain.NwBreak">
-		SELECT BREAK_ID, line_Id, break_Time, notify_Time, notify_To_Kt, 
-					notify_To_Kt_Yn, recovery_Time, break_Point, actual_Report_Yn,
-			   remark, create_User, create_Time, update_User, update_Time
-		FROM break_master
-		WHERE seq=#{seq}
-		ORDER BY create_Time DESC, step ASC
+		SELECT break_Id, line_Id, facility_ground, facility_name, 
+		break_Time, recovery_Time, break_manager, break_reason
+		FROM NW_BREAK
+		WHERE break_id=#{breakId}
 	</select>
 
 	<!-- 게시글 조회수 레코드 생성 -->
@@ -69,10 +67,9 @@
 	</update>
 
 	<!-- 게시글 작성 -->
-	<insert id="createBbs" parameterType="co.kr.airport.bbs.dto.param.CreateBbsParam"
-					useGeneratedKeys="true" keyProperty="seq">
-		INSERT bbs (id, ref, step, depth, title, content, created_at, del, read_count)
-		VALUES (#{id}, (SELECT ifnull(max(ref), 0)+1 from bbs b), 0, 0, #{title}, #{content}, NOW(), 0, 0)
+	<insert id="createNwBreak" parameterType="co.kr.airport.nwbreak.dto.param.CreateNwBreakParam">
+		INSERT NW_BREAK (LINE_ID, FACILITY_GROUND, FACILITY_NAME, BREAK_TIME, RECOVERY_TIME, BREAK_MANAGER, BREAK_REASON, WRITER) 
+		VALUES (#{lineId}, #{facilityGround}, #{facilityName} ,#{breakTime}, #{recoveryTime}, #{breakManager}, #{breakReason}, #{writer})
 	</insert>
 
 	<!-- 답글 작성 -->
