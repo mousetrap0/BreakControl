@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="co.kr.airport.line.dao.LineDao">
+
+	<!-- 글 목록 조회 -->
+	<select id="getLineSearchPageList" parameterType="co.kr.airport.line.dto.param.LineListParam"
+		resultType="co.kr.airport.line.domain.Line">
+		SELECT LINE_ID, LINE_NAME, CHANNEL_MODE, SPEED, NPC_NUMBER, MSPP_NUMBER, CHARGE
+		FROM
+					(SELECT row_number() OVER(ORDER BY LINE_ID) AS rnum,
+					LINE_ID, LINE_NAME, CHANNEL_MODE, SPEED, NPC_NUMBER, MSPP_NUMBER, CHARGE
+					FROM line_master
+					<if test="choice != null and choice != ''
+								and search != null and search != '' ">
+						<if test="choice == 'lineId'">
+							WHERE line_id LIKE concat('%', #{search}, '%')
+						</if>
+						<if test="choice == 'lineName'">
+							WHERE line_name LIKE concat('%', #{search}, '%')
+						</if>						
+					</if>
+					ORDER BY LINE_ID) a
+		WHERE rnum BETWEEN ${pageStart} AND ${pageEnd}
+	</select>
+
+	<!-- 글 총 개수 조회 -->
+	<select id="getLineCount" parameterType="co.kr.airport.line.dto.param.LineCountParam" resultType="Integer">
+
+		SELECT ifnull(count(*), 0)
+		FROM line_master
+		<if test="choice != null and choice != ''
+		 			and search != null and search != '' ">
+			<if test="choice == 'title'">
+				WHERE line_id LIKE concat('%', #{search}, '%')
+			</if>
+			<if test="choice == 'content'">
+				WHERE line_name LIKE concat('%', #{search}, '%')
+			</if>
+		</if>
+	</select>
+
+	<!-- 특정 게시글 조회 -->
+	<select id="getLine" parameterType="Integer" resultType="co.kr.airport.line.domain.Line">
+		SELECT LINE_ID, LINE_NAME, CHANNEL_MODE, SPEED, NPC_NUMBER, MSPP_NUMBER, CHARGE
+		FROM line_master
+		WHERE LINE_ID=#{lineId}
+	</select>
+
+	
+</mapper>
+
+
+

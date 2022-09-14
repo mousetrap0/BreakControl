@@ -1,18 +1,10 @@
-package co.kr.airport.bbs.dto.param;
+package co.kr.airport.line.dto.request;
 
-import co.kr.airport.bbs.dto.request.BbsListRequest;
-
-public class NwBreakListParam extends PageParam {
+public class LineListRequest {
 
     private String choice;
     private String search;
     private Integer page;
-
-    public NwBreakListParam(BbsListRequest req) {
-        this.choice = req.getChoice();
-        this.search = req.getSearch();
-        this.page = req.getPage();
-    }
 
     public String getChoice() {
         return choice;
