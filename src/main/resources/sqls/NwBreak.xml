@@ -8,16 +8,13 @@
 	<!-- 글 목록 조회 -->
 	<select id="getNwBreakSearchPageList" parameterType="co.kr.airport.nwbreak.dto.param.NwBreakListParam"
 		resultType="co.kr.airport.nwbreak.domain.NwBreak">
-		SELECT rnum, break_id, line_Id, break_Time, notify_Time, notify_To_Kt_Yn, 
-			   recovery_Time, break_Point, actual_report_yn,
-			   remark, create_User, create_Time, update_User, update_Time
-		
+		SELECT rnum, break_id, line_Id, facility_ground, facility_name, 
+		break_Time, recovery_Time, break_manager, break_reason
 		FROM
-					(SELECT row_number() OVER(ORDER BY create_Time DESC) AS rnum,
-					BREAK_ID, line_Id, break_Time, notify_Time, notify_To_Kt_Yn, 
-					recovery_Time, break_Point, actual_Report_Yn,
-			   		remark, create_User, create_Time, update_User, update_Time
-					FROM break_master
+					(SELECT row_number() OVER(ORDER BY break_Time DESC) AS rnum,
+					break_id, line_Id, facility_ground, facility_name, 
+					break_Time, recovery_Time, break_manager, break_reason
+					FROM NW_BREAK
 					<if test="choice != null and choice != ''
 								and search != null and search != '' ">
 						<if test="choice == 'lineId'">
@@ -27,7 +24,7 @@
 							WHERE break_id LIKE concat('%', #{search}, '%')
 						</if>
 					</if>
-					ORDER BY create_Time DESC) a
+					ORDER BY break_Time DESC) a
 		WHERE rnum BETWEEN ${pageStart} AND ${pageEnd}
 	</select>
 
@@ -35,7 +32,7 @@
 	<select id="getNwBreakCount" parameterType="co.kr.airport.nwbreak.dto.param.NwBreakCountParam" resultType="Integer">
 
 		SELECT ifnull(count(*), 0)
-		FROM break_master
+		FROM NW_BREAK
 		<if test="choice != null and choice != ''
 		 			and search != null and search != '' ">
 			<if test="choice == 'lineId'">

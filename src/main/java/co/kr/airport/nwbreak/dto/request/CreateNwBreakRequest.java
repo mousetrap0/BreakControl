@@ -2,9 +2,8 @@ package co.kr.airport.nwbreak.dto.request;
 
 public class CreateNwBreakRequest {
 
-    private String id;
-    private String title;
-    private String content;
+	private int breakId;
+	private String lineId;
     private String facilityGround;
     private String facilityName;
     private String breakTime;
@@ -13,23 +12,17 @@ public class CreateNwBreakRequest {
     private String breakReason;
     private String writer;
     
-	public String getId() {
-		return id;
+	public int getBreakId() {
+		return breakId;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setBreakId(int breakId) {
+		this.breakId = breakId;
 	}
-	public String getTitle() {
-		return title;
+	public String getLineId() {
+		return lineId;
 	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setLineId(String lineId) {
+		this.lineId = lineId;
 	}
 	public String getFacilityGround() {
 		return facilityGround;
@@ -73,6 +66,7 @@ public class CreateNwBreakRequest {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-
+    
+	
     
 }

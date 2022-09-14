@@ -6,106 +6,83 @@ import java.util.Date;
 public class NwBreak {
 
 	private int rnum;
-	private int breakId;
-	private String lineId;
-	private Date breakTime;
-	private Date notifyTime;
-	private String notifyToKtYn;
-	private Date recoveryTime;
-	private String breakPoint;
-	private String actualReportYn;
-	private String remark;
-	private String createUser;
-	private Date createTime;
-	private String updateUser;
-	private Date updateTime;
-	
-	
-	public int getRnum() {
-		return rnum;
-	}
-	public void setRnum(int rnum) {
-		this.rnum = rnum;
-	}
-	public int getBreakId() {
-		return breakId;
-	}
-	public void setBreakId(int breakId) {
-		this.breakId = breakId;
-	}
-	public String getLineId() {
-		return lineId;
-	}
-	public void setLineId(String lineId) {
-		this.lineId = lineId;
-	}
-	public Date getBreakTime() {
-		return breakTime;
-	}
-	public void setBreakTime(Date breakTime) {
-		this.breakTime = breakTime;
-	}
-	public Date getNotifyTime() {
-		return notifyTime;
-	}
-	public void setNotifyTime(Date notifyTime) {
-		this.notifyTime = notifyTime;
-	}
-	public String getNotifyToKtYn() {
-		return notifyToKtYn;
-	}
-	public void setNotifyToKtYn(String notifyToKtYn) {
-		this.notifyToKtYn = notifyToKtYn;
-	}
-	public Date getRecoveryTime() {
-		return recoveryTime;
-	}
-	public void setRecoveryTime(Date recoveryTime) {
-		this.recoveryTime = recoveryTime;
-	}
-	public String getBreakPoint() {
-		return breakPoint;
-	}
-	public void setBreakPoint(String breakPoint) {
-		this.breakPoint = breakPoint;
-	}
-	public String getActualReportYn() {
-		return actualReportYn;
-	}
-	public void setActualReportYn(String actualReportYn) {
-		this.actualReportYn = actualReportYn;
-	}
-	public String getRemark() {
-		return remark;
-	}
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
-	public String getCreateUser() {
-		return createUser;
-	}
-	public void setCreateUser(String createUser) {
-		this.createUser = createUser;
-	}
-	public Date getCreateTime() {
-		return createTime;
-	}
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
-	public String getUpdateUser() {
-		return updateUser;
-	}
-	public void setUpdateUser(String updateUser) {
-		this.updateUser = updateUser;
-	}
-	public Date getUpdateTime() {
-		return updateTime;
-	}
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
-	}
-	
+	 private Integer seq;
+	    private int breakId;
+		private String lineId;
+	    private String facilityGround;
+	    private String facilityName;
+	    private String breakTime;
+	    private String recoveryTime;
+	    private String breakManager;
+	    private String breakReason;
+	    private String writer;
+		public int getRnum() {
+			return rnum;
+		}
+		public void setRnum(int rnum) {
+			this.rnum = rnum;
+		}
+		public Integer getSeq() {
+			return seq;
+		}
+		public void setSeq(Integer seq) {
+			this.seq = seq;
+		}
+		public int getBreakId() {
+			return breakId;
+		}
+		public void setBreakId(int breakId) {
+			this.breakId = breakId;
+		}
+		public String getLineId() {
+			return lineId;
+		}
+		public void setLineId(String lineId) {
+			this.lineId = lineId;
+		}
+		public String getFacilityGround() {
+			return facilityGround;
+		}
+		public void setFacilityGround(String facilityGround) {
+			this.facilityGround = facilityGround;
+		}
+		public String getFacilityName() {
+			return facilityName;
+		}
+		public void setFacilityName(String facilityName) {
+			this.facilityName = facilityName;
+		}
+		public String getBreakTime() {
+			return breakTime;
+		}
+		public void setBreakTime(String breakTime) {
+			this.breakTime = breakTime;
+		}
+		public String getRecoveryTime() {
+			return recoveryTime;
+		}
+		public void setRecoveryTime(String recoveryTime) {
+			this.recoveryTime = recoveryTime;
+		}
+		public String getBreakManager() {
+			return breakManager;
+		}
+		public void setBreakManager(String breakManager) {
+			this.breakManager = breakManager;
+		}
+		public String getBreakReason() {
+			return breakReason;
+		}
+		public void setBreakReason(String breakReason) {
+			this.breakReason = breakReason;
+		}
+		public String getWriter() {
+			return writer;
+		}
+		public void setWriter(String writer) {
+			this.writer = writer;
+		}
+	    
 	
 	
 }
