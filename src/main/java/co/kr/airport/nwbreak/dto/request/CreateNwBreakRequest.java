@@ -11,7 +11,8 @@ public class CreateNwBreakRequest {
     private String breakManager;
     private String breakReason;
     private String writer;
-    
+    private String failtime;
+	
 	public int getBreakId() {
 		return breakId;
 	}
@@ -66,6 +67,13 @@ public class CreateNwBreakRequest {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
+	public String getFailtime() {
+		return failtime;
+	}
+	public void setFailtime(String failtime) {
+		this.failtime = failtime;
+	}
+
     
 	
     

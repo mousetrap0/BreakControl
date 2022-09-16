@@ -14,6 +14,7 @@ public class CreateNwBreakParam {
     private String breakManager;
     private String breakReason;
     private String writer;
+    private String failtime;
 
     public CreateNwBreakParam(CreateNwBreakRequest req) {
     	this.breakId = req.getBreakId();
@@ -25,6 +26,7 @@ public class CreateNwBreakParam {
         this.breakManager = req.getBreakManager();
         this.breakReason = req.getBreakReason();
         this.writer = req.getWriter();
+        this.failtime = req.getFailtime();
     }
 
 	public int getSeq() {
@@ -105,6 +107,15 @@ public class CreateNwBreakParam {
 
 	public void setWriter(String writer) {
 		this.writer = writer;
+	}
+	
+	public String getFailtime() {
+		return failtime;
+	}
+	
+	public void setFailtime(String failtime) { 
+		this.failtime = failtime;
+
 	}
 
 }
