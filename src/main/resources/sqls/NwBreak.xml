@@ -13,7 +13,7 @@
 		FROM
 					(SELECT row_number() OVER(ORDER BY break_Time DESC) AS rnum,
 					break_id, line_Id, facility_ground, facility_name, 
-					break_Time, recovery_Time, break_manager, break_reason, writer
+					break_Time, recovery_Time, break_manager, break_reason
 					FROM NW_BREAK
 					<if test="choice != null and choice != ''
 								and search != null and search != '' ">
@@ -47,7 +47,7 @@
 	<!-- 특정 게시글 조회 -->
 	<select id="getNwBreak" parameterType="Integer" resultType="co.kr.airport.nwbreak.domain.NwBreak">
 		SELECT break_Id, line_Id, facility_ground, facility_name, 
-		break_Time, recovery_Time, break_manager, break_reason, writer
+		break_Time, recovery_Time, break_manager, break_reason, (select name from member where id=writer) as writer
 		FROM NW_BREAK
 		WHERE break_id=#{breakId}
 	</select>
