@@ -4,7 +4,7 @@ import co.kr.airport.nwbreak.dto.request.CreateNwBreakRequest;
 
 public class CreateNwBreakAnswerParam {
 
-   private int breakId;
+    private int breakId;
 	private String lineId;
     private String facilityGround;
     private String facilityName;
@@ -13,7 +13,7 @@ public class CreateNwBreakAnswerParam {
     private String breakManager;
     private String breakReason;
     private String writer;
-    private String failtime;
+    private String failTime;
     
 	public CreateNwBreakAnswerParam(Integer parentSeq, CreateNwBreakRequest req) {
         this.breakId = req.getBreakId();
@@ -25,9 +25,9 @@ public class CreateNwBreakAnswerParam {
         this.breakManager = req.getBreakManager();
         this.breakReason = req.getBreakReason();
         this.writer = req.getWriter();
-        this.failtime = req.getFailtime();
+        this.failTime = req.getFailTime();
        
-        }
+    }
 
 	public int getBreakId() {
 		return breakId;
@@ -101,12 +101,12 @@ public class CreateNwBreakAnswerParam {
 		this.writer = writer;
 	}
 	
-	public String getFailtime() {
-		return failtime;
+	public String getFailTime() {
+		return failTime;
 	}
 
-	public void setFailtime(String failtime) {
-		this.failtime= failtime;
+	public void setFailTime(String failTime) {
+		this.failTime = failTime;
 	}
 
 }

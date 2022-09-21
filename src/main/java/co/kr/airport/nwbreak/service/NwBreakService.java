@@ -38,6 +38,13 @@ public class NwBreakService {
 		param.setPageParam(req.getPage(), 10);
 
 		List<NwBreak> nwBreakList = dao.getNwBreakSearchPageList(param);
+		
+		for(NwBreak nwbreak : nwBreakList) {
+			long diff = nwbreak.getRecoveryTime().getTime() - nwbreak.getBreakTime().getTime();
+			long min = diff / 60000;
+			nwbreak.setFailTime(min);
+		}
+		
 		int pageCnt = dao.getNwBreakCount(new NwBreakCountParam(req));
 
 		return new NwBreakListResponse(nwBreakList, pageCnt);
@@ -77,7 +84,7 @@ public class NwBreakService {
 
 		CreateNwBreakAnswerParam param = new CreateNwBreakAnswerParam(parentSeq, req);
 		dao.createNwBreakAnswer(param);
-		return new CreateNwBreakResponse(param.getSeq());
+		return new CreateNwBreakResponse(param.getBreakId());
 	}
 
 	/* 글 수정 */

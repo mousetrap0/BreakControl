@@ -1,5 +1,6 @@
 package co.kr.airport.nwbreak.domain;
 
+import java.util.Date;
 
 public class NwBreak {
 
@@ -8,12 +9,12 @@ public class NwBreak {
 	private String lineId;
     private String facilityGround;
     private String facilityName;
-    private String breakTime;
-    private String recoveryTime;
+    private Date breakTime;
+    private Date recoveryTime;
     private String breakManager;
     private String breakReason;
     private String writer;
-    private String failtime;
+    private long failTime;
     
 	public int getRnum() {
 		return rnum;
@@ -45,16 +46,16 @@ public class NwBreak {
 	public void setFacilityName(String facilityName) {
 		this.facilityName = facilityName;
 	}
-	public String getBreakTime() {
+	public Date getBreakTime() {
 		return breakTime;
 	}
-	public void setBreakTime(String breakTime) {
+	public void setBreakTime(Date breakTime) {
 		this.breakTime = breakTime;
 	}
-	public String getRecoveryTime() {
+	public Date getRecoveryTime() {
 		return recoveryTime;
 	}
-	public void setRecoveryTime(String recoveryTime) {
+	public void setRecoveryTime(Date recoveryTime) {
 		this.recoveryTime = recoveryTime;
 	}
 	public String getBreakManager() {
@@ -75,12 +76,10 @@ public class NwBreak {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public String getFailtime() {
-		return failtime;
+	public long getFailTime() {
+		return failTime;
 	}
-	public void setFailtime(String failtime) {
-		this.failtime = failtime;
+	public void setFailTime(long failTime) {
+		this.failTime = failTime;
 	}
-
-	
 }
