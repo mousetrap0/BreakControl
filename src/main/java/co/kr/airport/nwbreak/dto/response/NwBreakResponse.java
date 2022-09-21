@@ -1,6 +1,5 @@
 package co.kr.airport.nwbreak.dto.response;
 
-import co.kr.airport.bbs.domain.Bbs;
 import co.kr.airport.nwbreak.domain.NwBreak;
 
 public class NwBreakResponse {
