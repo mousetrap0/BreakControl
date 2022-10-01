@@ -130,11 +130,40 @@ public class NwBreakService {
 			cal.set(year, 11, 31);
 			end = sdf.format(cal.getTime());
 			
-		} /*else if("quarter".equals(type)){
+		} else if("quarter".equals(type)){
+			
+			if(month>=0 && month<=2) { //1분기
+				cal.set(year, 0, 1);
+				start = sdf.format(cal.getTime());
+						
+				cal.set(year, 2, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+				end = sdf.format(cal.getTime());
+			}
+			else if(month>=3 && month<=5) { //2분기
+				cal.set(year, 3, 1);
+				start = sdf.format(cal.getTime());
+						
+				cal.set(year, 5, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+				end = sdf.format(cal.getTime());
+							
+			}
+			else if(month>=6 && month<=8) { //3분기
+				cal.set(year, 6, 1);
+				start = sdf.format(cal.getTime());
+						
+				cal.set(year, 8, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+				end = sdf.format(cal.getTime());
+			}
+			else { //4분기
+				cal.set(year, 9, 1);
+				start = sdf.format(cal.getTime());
+						
+				cal.set(year, 11, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+				end = sdf.format(cal.getTime());
+			}
 			
 			
-			
-		}*/ else if("month".equals(type)){
+		} else if("month".equals(type)){
 			cal.set(year, cal.get(Calendar.MONTH), 1);
 			start = sdf.format(cal.getTime());
 					
