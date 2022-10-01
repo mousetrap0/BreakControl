@@ -9,11 +9,11 @@
 	<select id="getNwBreakSearchPageList" parameterType="co.kr.airport.nwbreak.dto.param.NwBreakListParam"
 		resultType="co.kr.airport.nwbreak.domain.NwBreak">
 		SELECT rnum, break_id, line_Id, facility_ground, facility_name, 
-		break_Time, recovery_Time, break_manager, break_reason
+		break_Time, recovery_Time, fail_Time, break_manager, break_reason
 		FROM
 					(SELECT row_number() OVER(ORDER BY break_Time DESC) AS rnum,
 					break_id, line_Id, facility_ground, facility_name, 
-					break_Time, recovery_Time, break_manager, break_reason
+					break_Time, recovery_Time, fail_time, break_manager, break_reason
 					FROM NW_BREAK
 					<if test="choice != null and choice != ''
 								and search != null and search != '' ">
@@ -47,7 +47,7 @@
 	<!-- 특정 게시글 조회 -->
 	<select id="getNwBreak" parameterType="Integer" resultType="co.kr.airport.nwbreak.domain.NwBreak">
 		SELECT break_Id, line_Id, facility_ground, facility_name, 
-		break_Time, recovery_Time, break_manager, break_reason, (select name from member where id=writer) as writer
+		break_Time, recovery_Time, fail_time, break_manager, break_reason, (select name from member where id=writer) as writer
 		FROM NW_BREAK
 		WHERE break_id=#{breakId}
 	</select>
@@ -68,8 +68,8 @@
 
 	<!-- 게시글 작성 -->
 	<insert id="createNwBreak" parameterType="co.kr.airport.nwbreak.dto.param.CreateNwBreakParam">
-		INSERT NW_BREAK (LINE_ID, FACILITY_GROUND, FACILITY_NAME, BREAK_TIME, RECOVERY_TIME, BREAK_MANAGER, BREAK_REASON, WRITER) 
-		VALUES (#{lineId}, #{facilityGround}, #{facilityName} ,#{breakTime}, #{recoveryTime}, #{breakManager}, #{breakReason}, #{writer})
+		INSERT NW_BREAK (LINE_ID, FACILITY_GROUND, FACILITY_NAME, BREAK_TIME, RECOVERY_TIME, FAIL_TIME, BREAK_MANAGER, BREAK_REASON, WRITER) 
+		VALUES (#{lineId}, #{facilityGround}, #{facilityName} ,#{breakTime}, #{recoveryTime}, #{failTime}, #{breakManager}, #{breakReason}, #{writer})
 	</insert>
 
 	<!-- 답글 작성 -->
@@ -114,6 +114,19 @@
 		SET del = 1
 		WHERE seq=#{seq}
 	</update>
+	
+	
+	<!-- 차트 조회 -->
+	<select id="getChart" parameterType="co.kr.airport.nwbreak.dto.param.ChartParam" resultType="co.kr.airport.nwbreak.domain.Chart">
+		SELECT COUNT(*) break_count, line_id, facility_ground, facility_name, SUM(fail_time) fail_time_total
+		FROM nw_break
+		WHERE 
+		break_time 	&gt;= #{start}
+		AND break_time &lt;= #{end}
+		GROUP BY line_id	
+	</select>
+	
+	
 
 </mapper>
 

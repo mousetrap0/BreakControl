@@ -5,6 +5,7 @@ import java.util.Date;
 import co.kr.airport.nwbreak.dto.request.CreateNwBreakRequest;
 import co.kr.airport.nwbreak.dto.request.NwBreakListRequest;
 import co.kr.airport.nwbreak.dto.request.UpdateNwBreakRequest;
+import co.kr.airport.nwbreak.dto.response.ChartResponse;
 import co.kr.airport.nwbreak.dto.response.CreateNwBreakResponse;
 import co.kr.airport.nwbreak.dto.response.DeleteNwBreakResponse;
 import co.kr.airport.nwbreak.dto.response.NwBreakListResponse;
@@ -82,6 +83,15 @@ public class BreakController{
 		System.out.println("BreakController deleteNwBreak " + new Date());
 
 		return ResponseEntity.ok(service.deleteNwBreak(seq));
+	}
+	
+	/* [GET] /nwBreak/chart?type={type} 게시글 답글 작성  
+	 * type : year, quarter, month */
+	@GetMapping("/chart")
+	public ResponseEntity<ChartResponse> chart(@RequestParam String type) {
+		System.out.println("BreakController chart " + new Date());
+
+		return ResponseEntity.ok(service.chart(type));
 	}
 }
 

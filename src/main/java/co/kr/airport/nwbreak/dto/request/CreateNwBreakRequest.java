@@ -1,17 +1,19 @@
 package co.kr.airport.nwbreak.dto.request;
 
+import java.util.Date;
+
 public class CreateNwBreakRequest {
 
 	private int breakId;
 	private String lineId;
     private String facilityGround;
     private String facilityName;
-    private String breakTime;
-    private String recoveryTime;
+    private Date breakTime;
+    private Date recoveryTime;
     private String breakManager;
     private String breakReason;
     private String writer;
-    private String failTime;
+    private long failTime;
 	
 	public int getBreakId() {
 		return breakId;
@@ -37,16 +39,16 @@ public class CreateNwBreakRequest {
 	public void setFacilityName(String facilityName) {
 		this.facilityName = facilityName;
 	}
-	public String getBreakTime() {
+	public Date getBreakTime() {
 		return breakTime;
 	}
-	public void setBreakTime(String breakTime) {
+	public void setBreakTime(Date breakTime) {
 		this.breakTime = breakTime;
 	}
-	public String getRecoveryTime() {
+	public Date getRecoveryTime() {
 		return recoveryTime;
 	}
-	public void setRecoveryTime(String recoveryTime) {
+	public void setRecoveryTime(Date recoveryTime) {
 		this.recoveryTime = recoveryTime;
 	}
 	public String getBreakManager() {
@@ -67,10 +69,11 @@ public class CreateNwBreakRequest {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public String getFailTime() {
+	public long getFailTime() {
 		return failTime;
 	}
-	public void setFailTime(String failTime) {
+	public void setFailTime(long failTime) {
 		this.failTime = failTime;
 	}
+	
 }

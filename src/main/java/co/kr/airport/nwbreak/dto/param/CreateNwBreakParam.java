@@ -1,5 +1,7 @@
 package co.kr.airport.nwbreak.dto.param;
 
+import java.util.Date;
+
 import co.kr.airport.nwbreak.dto.request.CreateNwBreakRequest;
 
 public class CreateNwBreakParam {
@@ -9,12 +11,12 @@ public class CreateNwBreakParam {
   	private String lineId;
     private String facilityGround;
     private String facilityName;
-    private String breakTime;
-    private String recoveryTime;
+    private Date breakTime;
+    private Date recoveryTime;
     private String breakManager;
     private String breakReason;
     private String writer;
-    private String failTime;
+    private long failTime;
 
     public CreateNwBreakParam(CreateNwBreakRequest req) {
     	this.breakId = req.getBreakId();
@@ -61,19 +63,19 @@ public class CreateNwBreakParam {
 		this.facilityName = facilityName;
 	}
 
-	public String getBreakTime() {
+	public Date getBreakTime() {
 		return breakTime;
 	}
 
-	public void setBreakTime(String breakTime) {
+	public void setBreakTime(Date breakTime) {
 		this.breakTime = breakTime;
 	}
 
-	public String getRecoveryTime() {
+	public Date getRecoveryTime() {
 		return recoveryTime;
 	}
 
-	public void setRecoveryTime(String recoveryTime) {
+	public void setRecoveryTime(Date recoveryTime) {
 		this.recoveryTime = recoveryTime;
 	}
 
@@ -101,13 +103,13 @@ public class CreateNwBreakParam {
 		this.writer = writer;
 	}
 
-	public String getFailTime() {
+	public long getFailTime() {
 		return failTime;
 	}
 
-	public void setFailTime(String failTime) {
+	public void setFailTime(long failTime) {
 		this.failTime = failTime;
 	}
-	
+
 
 }

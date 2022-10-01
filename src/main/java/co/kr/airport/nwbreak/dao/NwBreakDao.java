@@ -2,7 +2,9 @@ package co.kr.airport.nwbreak.dao;
 
 import java.util.List;
 
+import co.kr.airport.nwbreak.domain.Chart;
 import co.kr.airport.nwbreak.domain.NwBreak;
+import co.kr.airport.nwbreak.dto.param.ChartParam;
 import co.kr.airport.nwbreak.dto.param.CreateNwBreakAnswerParam;
 import co.kr.airport.nwbreak.dto.param.CreateNwBreakParam;
 import co.kr.airport.nwbreak.dto.param.CreateReadCountParam;
@@ -35,4 +37,6 @@ public interface NwBreakDao {
 	Integer updateNwBreak(UpdateNwBreakParam param);
 
 	Integer deleteNwBreak(Integer seq);
+	
+	List<Chart> getChart(ChartParam param);
 }
