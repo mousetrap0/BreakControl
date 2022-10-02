@@ -2,20 +2,20 @@ package co.kr.airport.nwbreak.dto.param;
 
 public class CreateReadCountParam {
 
-    private Integer bbsSeq; // 게시글 번호
+    private Integer breakId; // 게시글 번호
     private String readerId; // 게시글 조회자 아이디
 
-    public CreateReadCountParam(Integer bbsSeq, String readerId) {
-        this.bbsSeq = bbsSeq;
+    public CreateReadCountParam(Integer breakId, String readerId) {
+        this.breakId = breakId;
         this.readerId = readerId;
     }
 
-    public Integer getBbsSeq() {
-        return bbsSeq;
+    public Integer getBreakId() {
+        return breakId;
     }
 
-    public void setBbsSeq(Integer bbsSeq) {
-        this.bbsSeq = bbsSeq;
+    public void setBreakId(Integer breakId) {
+        this.breakId = breakId;
     }
 
     public String getReaderId() {

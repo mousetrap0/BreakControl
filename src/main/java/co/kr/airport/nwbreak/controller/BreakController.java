@@ -45,11 +45,11 @@ public class BreakController{
 	}
 
 	/* [GET /NwBreak/{seq}?readerId={id}] 게시글 상세 API */
-	@GetMapping("/{seq}")
-	public ResponseEntity<NwBreakResponse> getNwBreak(@PathVariable  Integer seq, @RequestParam String readerId) {
+	@GetMapping("/{breakId}")
+	public ResponseEntity<NwBreakResponse> getNwBreak(@PathVariable  Integer breakId, @RequestParam String readerId) {
 		System.out.println("BreakController getNwBreak() " + new Date());
 
-		return ResponseEntity.ok(service.getNwBreak(seq, readerId));
+		return ResponseEntity.ok(service.getNwBreak(breakId, readerId));
 	}
 
 	/* [POST] /NwBreak 게시글 작성 */
@@ -61,28 +61,28 @@ public class BreakController{
 	}
 
 	/* [POST] /NwBreak/{parentSeq}/answer 게시글 답글 작성  */
-	@PostMapping("/{parentSeq}/answer")
-	public ResponseEntity<CreateNwBreakResponse> createNwBreakAnswer(@PathVariable Integer parentSeq, @RequestBody CreateNwBreakRequest req) {
+	@PostMapping("/{parentBreakId}/answer")
+	public ResponseEntity<CreateNwBreakResponse> createNwBreakAnswer(@PathVariable Integer parentBreakId, @RequestBody CreateNwBreakRequest req) {
 		System.out.println("BreakController createNwBreakAnswer " + new Date());
 
-		return ResponseEntity.ok(service.createNwBreakAnswer(parentSeq, req));
+		return ResponseEntity.ok(service.createNwBreakAnswer(parentBreakId, req));
 	}
 
 	/* [PATCH] /NwBreak/{seq} 게시글 수정  */
 	// TODO - 수정하는 사람 ID 확인
-	@PatchMapping("/{seq}")
-	public ResponseEntity<UpdateNwBreakResponse> updateNwBreak(@PathVariable Integer seq, @RequestBody UpdateNwBreakRequest req) {
+	@PatchMapping("/{breakId}")
+	public ResponseEntity<UpdateNwBreakResponse> updateNwBreak(@PathVariable Integer breakId, @RequestBody UpdateNwBreakRequest req) {
 		System.out.println("BreakController updateNwBreak " + new Date());
 
-		return ResponseEntity.ok(service.updateNwBreak(seq, req));
+		return ResponseEntity.ok(service.updateNwBreak(breakId, req));
 	}
 
 	/* [DELETE] /NwBreak/{seq} 게시글 삭제  */
-	@DeleteMapping("/{seq}")
-	public ResponseEntity<DeleteNwBreakResponse> deleteNwBreak(@PathVariable Integer seq) {
+	@DeleteMapping("/{breakId}")
+	public ResponseEntity<DeleteNwBreakResponse> deleteNwBreak(@PathVariable Integer breakId) {
 		System.out.println("BreakController deleteNwBreak " + new Date());
 
-		return ResponseEntity.ok(service.deleteNwBreak(seq));
+		return ResponseEntity.ok(service.deleteNwBreak(breakId));
 	}
 	
 	/* [GET] /nwBreak/chart?type={type} 게시글 답글 작성  
