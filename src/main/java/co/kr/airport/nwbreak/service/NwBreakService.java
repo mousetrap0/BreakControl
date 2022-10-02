@@ -107,8 +107,8 @@ public class NwBreakService {
 	}
 
 	/* 게시글 삭제 */
-	public DeleteNwBreakResponse deleteNwBreak(Integer seq) {
-		Integer deletedRecordCount = dao.deleteNwBreak(seq);
+	public DeleteNwBreakResponse deleteNwBreak(Integer breakId) {
+		Integer deletedRecordCount = dao.deleteNwBreak(breakId);
 		return new DeleteNwBreakResponse(deletedRecordCount);
 	}
 

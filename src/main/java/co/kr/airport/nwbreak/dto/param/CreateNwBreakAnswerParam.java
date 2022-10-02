@@ -17,7 +17,7 @@ public class CreateNwBreakAnswerParam {
     private String writer;
     private long failTime;
     
-	public CreateNwBreakAnswerParam(Integer parentSeq, CreateNwBreakRequest req) {
+	public CreateNwBreakAnswerParam(Integer parentBreakId, CreateNwBreakRequest req) {
         this.breakId = req.getBreakId();
         this.lineId = req.getLineId();
 		this.facilityGround = req.getFacilityGround();

@@ -24,19 +24,19 @@ public interface NwBreakDao {
 	List<NwBreak> getNwBreakSearchPageList(NwBreakListParam param);
 	Integer getNwBreakCount(NwBreakCountParam param);
 
-	NwBreak getNwBreak(Integer seq);
+	NwBreak getNwBreak(Integer breakID);
 	Integer createNwBreakReadCountHistory(CreateReadCountParam param);
-	Integer increaseNwBreakReadCount(Integer seq);
+	Integer increaseNwBreakReadCount(Integer breakId);
 
 	void createNwBreak(CreateNwBreakParam param);
 
-	Integer updateNwBreakStep(Integer parentSeq);
-	Integer getNwBreakAnswerCount(Integer parentSeq);
+	Integer updateNwBreakStep(Integer parentBreakId);
+	Integer getNwBreakAnswerCount(Integer parentBreakId);
 	void createNwBreakAnswer(CreateNwBreakAnswerParam param);
 
 	Integer updateNwBreak(UpdateNwBreakParam param);
 
-	Integer deleteNwBreak(Integer seq);
+	Integer deleteNwBreak(Integer breakId);
 	
 	List<Chart> getChart(ChartParam param);
 }
