@@ -86,23 +86,23 @@ public class NwBreakService {
 	}
 
 	/* 답글 추가 */
-	public CreateNwBreakResponse createNwBreakAnswer(Integer parentSeq, CreateNwBreakRequest req) {
-		Integer updatedRecordCount = dao.updateNwBreakStep(parentSeq);
-		Integer NwBreakAnswerCount = dao.getNwBreakAnswerCount(parentSeq);
+	public CreateNwBreakResponse createNwBreakAnswer(Integer parentBreakId, CreateNwBreakRequest req) {
+		Integer updatedRecordCount = dao.updateNwBreakStep(parentBreakId);
+		Integer NwBreakAnswerCount = dao.getNwBreakAnswerCount(parentBreakId);
 		// TODO - 예외처리
 		if (!Objects.equals(updatedRecordCount, NwBreakAnswerCount)) {
 			System.out.println("NwBreakService createNwBreakAnswer: Fail update parent NwBreak step !!");
 			return null;
 		}
 
-		CreateNwBreakAnswerParam param = new CreateNwBreakAnswerParam(parentSeq, req);
+		CreateNwBreakAnswerParam param = new CreateNwBreakAnswerParam(parentBreakId, req);
 		dao.createNwBreakAnswer(param);
 		return new CreateNwBreakResponse(param.getBreakId());
 	}
 
 	/* 글 수정 */
-	public UpdateNwBreakResponse updateNwBreak(Integer seq, UpdateNwBreakRequest req) {
-		Integer updatedRecordCount = dao.updateNwBreak(new UpdateNwBreakParam(seq, req));
+	public UpdateNwBreakResponse updateNwBreak(Integer breakId, UpdateNwBreakRequest req) {
+		Integer updatedRecordCount = dao.updateNwBreak(new UpdateNwBreakParam(breakId, req));
 		return new UpdateNwBreakResponse(updatedRecordCount);
 	}
 
