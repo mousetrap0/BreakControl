@@ -15,15 +15,18 @@
 					break_id, line_Id, facility_ground, facility_name, 
 					break_Time, recovery_Time, fail_time, break_manager, break_reason
 					FROM NW_BREAK
+					WHERE 1=1
 					<if test="choice != null and choice != ''
 								and search != null and search != '' ">
 						<if test="choice == 'lineId'">
-							WHERE line_Id LIKE concat('%', #{search}, '%')
+							AND line_Id LIKE concat('%', #{search}, '%')
 						</if>
 						<if test="choice == 'breakId'">
-							WHERE break_id LIKE concat('%', #{search}, '%')
+							AND break_id LIKE concat('%', #{search}, '%')
 						</if>
+						
 					</if>
+					AND DEL ='N'
 					ORDER BY break_Time DESC) a
 		WHERE rnum BETWEEN ${pageStart} AND ${pageEnd}
 	</select>
@@ -33,21 +36,23 @@
 
 		SELECT ifnull(count(*), 0)
 		FROM NW_BREAK
+		WHERE 1=1
 		<if test="choice != null and choice != ''
 		 			and search != null and search != '' ">
 			<if test="choice == 'lineId'">
-				WHERE line_Id LIKE concat('%', #{search}, '%')
+				AND line_Id LIKE concat('%', #{search}, '%')
 			</if>
 			<if test="choice == 'breakId'">
-				WHERE BREAK_ID LIKE concat('%', #{search}, '%')
+				AND BREAK_ID LIKE concat('%', #{search}, '%')
 			</if>
 		</if>
+		AND DEL ='N'
 	</select>
 
 	<!-- 특정 게시글 조회 -->
 	<select id="getNwBreak" parameterType="Integer" resultType="co.kr.airport.nwbreak.domain.NwBreak">
 		SELECT break_Id, line_Id, facility_ground, facility_name, 
-		break_Time, recovery_Time, fail_time, break_manager, break_reason, (select name from member where id=writer) as writer
+		break_Time, recovery_Time, fail_time, break_manager, break_reason, (select name from member where id=writer) as writer, writer as id
 		FROM NW_BREAK
 		WHERE break_id=#{breakId}
 	</select>
@@ -68,8 +73,8 @@
 
 	<!-- 게시글 작성 -->
 	<insert id="createNwBreak" parameterType="co.kr.airport.nwbreak.dto.param.CreateNwBreakParam">
-		INSERT NW_BREAK (LINE_ID, FACILITY_GROUND, FACILITY_NAME, BREAK_TIME, RECOVERY_TIME, FAIL_TIME, BREAK_MANAGER, BREAK_REASON, WRITER) 
-		VALUES (#{lineId}, #{facilityGround}, #{facilityName} ,#{breakTime}, #{recoveryTime}, #{failTime}, #{breakManager}, #{breakReason}, #{writer})
+		INSERT NW_BREAK (LINE_ID, FACILITY_GROUND, FACILITY_NAME, BREAK_TIME, RECOVERY_TIME, FAIL_TIME, BREAK_MANAGER, BREAK_REASON, WRITER, DEL) 
+		VALUES (#{lineId}, #{facilityGround}, #{facilityName} ,#{breakTime}, #{recoveryTime}, #{failTime}, #{breakManager}, #{breakReason}, #{writer}, 'N')
 	</insert>
 
 	<!-- 답글 작성 -->
@@ -101,18 +106,20 @@
 
 	<!-- 게시글 수정 -->
 	<!-- 수정 성공 시 1(수정한 레코드 개수) 을 반환, 실패 시 0 을 반환 -->
-	<update id="updateBbs" parameterType="co.kr.airport.bbs.dto.param.UpdateBbsParam">
+	<update id="updateNwBreak" parameterType="co.kr.airport.nwbreak.dto.param.UpdateNwBreakParam">
 
-		UPDATE bbs
-		SET content=#{content}, title=#{title}
-		WHERE seq=#{seq}
+		UPDATE NW_BREAK
+		SET breakId=#{breakId}, lineId=#{lineId}, facilityGround=#{facilityground}, facilityName=#{facilityName}, 
+		breakTime=#{breakTime}, recoveryTime=#{recoveryTime}, breakManager=#{breakManager},
+	    breakReason=#{breakReason}, writer=#{writer}, failTime=#{failTime}
+		WHERE BREAK_ID=#{breakId}
 
 	</update>
 
-	<update id="deleteBbs" parameterType="Integer">
-		UPDATE bbs
-		SET del = 1
-		WHERE seq=#{seq}
+	<update id="deleteNwBreak" parameterType="Integer">
+		UPDATE NW_BREAK
+		SET del = 'Y'
+		WHERE BREAK_ID=#{breakId}
 	</update>
 	
 	

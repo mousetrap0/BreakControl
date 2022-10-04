@@ -15,6 +15,7 @@ public class NwBreak {
     private String breakReason;
     private String writer;
     private long failTime;
+    private String id;
     
 	public int getRnum() {
 		return rnum;
@@ -82,4 +83,12 @@ public class NwBreak {
 	public void setFailTime(long failTime) {
 		this.failTime = failTime;
 	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	
 }

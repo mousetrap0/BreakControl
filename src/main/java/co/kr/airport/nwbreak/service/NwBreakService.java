@@ -1,10 +1,7 @@
 package co.kr.airport.nwbreak.service;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -102,7 +99,13 @@ public class NwBreakService {
 
 	/* 글 수정 */
 	public UpdateNwBreakResponse updateNwBreak(Integer breakId, UpdateNwBreakRequest req) {
-		Integer updatedRecordCount = dao.updateNwBreak(new UpdateNwBreakParam(breakId, req));
+		UpdateNwBreakParam param = new UpdateNwBreakParam(breakId, req);
+		
+		long diff = req.getRecoveryTime().getTime() - req.getBreakTime().getTime();
+		long min = diff / 60000;
+		param.setFailTime(min);
+		
+		Integer updatedRecordCount = dao.updateNwBreak(param);
 		return new UpdateNwBreakResponse(updatedRecordCount);
 	}
 
